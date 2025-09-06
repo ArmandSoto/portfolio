@@ -3,6 +3,8 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --mint: #3eb489;
+  --light-mint: #b2f2bb;
 }
 
 @theme inline {
@@ -23,5 +25,11 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Roboto,Arial, Helvetica, sans-serif;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+}
+
+
+.text-neon {
+  color: var(--mint);
+  text-shadow: 0 0 8px var(--mint);
 }

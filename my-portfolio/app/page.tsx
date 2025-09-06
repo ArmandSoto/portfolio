@@ -2,14 +2,18 @@
 
 import { useEffect, useState } from "react";
 
+/* when animation is done, fade in all of the other elements and maybe add a bounce */
+
 
 
 export default function Home() {
-  const titleList = ["Data Expert", "Programmer", "Designer"];
+  const titleList = ["Data Expert.", "Programmer.", "Designer."];
   const [title, setTitle] = useState("");
 
   useEffect(()=> {
     let totalDelay = 0; // acts as the *alarm* of when to start typing the next word
+
+    // loop through each title and apply typing effect
     titleList.forEach((word)=>{
       setTimeout(() => {
         let charIndex = 0;
@@ -26,8 +30,8 @@ export default function Home() {
   }, [])
 
   return (
-    <div className="">
-      <div className="flex m-auto w-1/2 h-1/2 font-extrabold text-6xl">
+    <div className="flex items-center justify-center w-screen h-screen">
+      <div className="flex m-auto font-extrabold text-9xl text-neon text-center">
         <h1>
           {title}
         </h1>    
