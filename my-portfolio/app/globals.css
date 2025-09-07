@@ -4,7 +4,7 @@
   --background: #ffffff;
   --foreground: #171717;
   --mint: #3eb489;
-  --light-mint: #b2f2bb;
+  --light-mint: #82cbab;
 }
 
 @theme inline {
@@ -32,4 +32,14 @@ body {
 .text-neon {
   color: var(--mint);
   text-shadow: 0 0 8px var(--mint);
+}
+
+.text-neon-light{
+  color: var(--light-mint);
+  text-shadow: 0 0 4px var(--light-mint);
+}
+
+.text-neon-white{
+  color: white;
+  text-shadow: 0 0 4px white;
 }

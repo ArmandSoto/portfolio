@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react";
+import Navbar from "./navbar";
 
 /* when animation is done, fade in all of the other elements and maybe add a bounce */
 
@@ -10,11 +11,14 @@ export default function Home() {
   const titleList: string[] = ["Data Expert", "Programmer", "Designer"];
   const [title, setTitle] = useState<string>("");
   const [showCursor, setShowCursor] = useState<boolean>(true);
+  const [showNavbar, setShowNavbar] = useState<boolean>(false);
+  const [moveTitle, setMoveTitle] = useState<boolean>(false);
 
   function fadeInElements(){
     
   }
 
+  // typing effect on load
   useEffect(()=> {
     let totalDelay = 0; // acts as the *alarm* of when to start typing the next word
     const timeouts: NodeJS.Timeout[] = [];
@@ -39,6 +43,8 @@ export default function Home() {
             if (index === titleList.length-1){
               clearInterval(cursorInterval);
               setShowCursor(true);
+              setShowNavbar(true);
+              setMoveTitle(true);
             }
           }
         }, 150);
@@ -60,17 +66,27 @@ export default function Home() {
       timeouts.forEach((t) => clearTimeout(t));
       intervals.forEach((i) => clearInterval(i));
     }
+  
 
   }, [])
 
   return (
+    <div>
+      <div className={`transition-opacity duration-3000 ease-out ${showNavbar ? "opacity-100" : "opacity-0"}`}>
+        <Navbar />
+      </div>
+      
     <div className="flex items-center justify-center w-screen h-screen">
       <div className="flex m-auto font-extrabold text-9xl text-neon text-center">
-        <h1>
-          {title}
-          <span className={`inline-block ${showCursor ? "" : "opacity-0"}`}>|</span>
-        </h1>    
+        <div className={`${moveTitle ? "transform transition-transform duration-1000 ease-out -translate-x-64" : ""}`}>
+          <h1>
+            {title}
+            <span className={`inline-block ${showCursor ? "" : "opacity-0"}`}>|</span>
+          </h1>    
+        </div>
       </div>
     </div>
+    </div>
+
   );
 }
