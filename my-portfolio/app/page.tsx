@@ -97,7 +97,7 @@ export default function Home() {
         <img
           src="/Google Profile Picture.jpg"
           alt="Profile"
-          className={`w-84 h-84 rounded-full object-cover absolute right-30 transition-opacity border-mint border-4 duration-2000 ease-in ${
+          className={`w-84 h-84 rounded-full object-cover absolute right-30 transition-opacity border-[#3eb489] border-4 duration-2000 ease-in ${
             showProfilePic ? "opacity-100" : "opacity-0"
           }`}
         />
