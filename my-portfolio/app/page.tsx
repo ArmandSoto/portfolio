@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Skills from "./Skills/page";
 import Navbar from "./navbar";
 
 /* when animation is done, fade in all of the other elements and maybe add a bounce */
@@ -13,8 +14,6 @@ export default function Home() {
   const [showNavbar, setShowNavbar] = useState<boolean>(false);
   const [moveTitle, setMoveTitle] = useState<boolean>(false);
   const [showProfilePic, setShowProfilePic] = useState<boolean>(false);
-
-  function fadeInElements() {}
 
   // typing effect on load
   useEffect(() => {
@@ -55,8 +54,6 @@ export default function Home() {
       totalDelay += word.length * 150 + 500;
     });
 
-    //also make sure to move it the word to the left and then fade in my
-    //face with other elements
 
     //do cleanup for useEffect
     return () => {
@@ -102,6 +99,7 @@ export default function Home() {
           }`}
         />
       </div>
+      <Skills />
     </div>
   );
 }
