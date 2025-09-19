@@ -63,7 +63,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div>
+    <div className="">
       {/*Navbar fade-in*/}
       <div
         className={`transition-opacity duration-3000 ease-out ${
@@ -78,7 +78,7 @@ export default function Home() {
       <div className={`flex items-center w-screen h-screen justify-center`}>
         {/*64 previously */}
         <div
-          className={`relative flex font-extrabold text-9xl text-neon text-center ${
+          className={`relative flex font-extrabold text-9xl text-black text-center ${
             moveTitle
               ? "transform transition-transform duration-1000 ease-out -translate-x-54"
               : ""
