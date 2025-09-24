@@ -2,41 +2,43 @@
 
 import { useEffect, useState } from "react";
 
+interface Skills {
+    software: string[];
+    programming: string[];
+    soft: string[];
+}
+
+// we don't use state here b/c this is only going to be changed by me
+
+const skills: Skills = {
+        software: ["Adobe Photoshop", "Adobe Premiere Pro", "Microsoft Word", "Microsoft Excel"],
+        programming: ["C/C++", "Java", "Javascript", "Typescript", "Python", "SQL", "HTML", "CSS", "React", "Tailwind", "NextJS"],
+        soft: ["Data Analysis", "Communication", "Teamplayer"],
+
+};
+
 export default function SkillsRotator(){
-    //maybe refactor later into an object to group states
 
-    const [index, setIndex] = useState(0);
-    const skillPairs: [string, string][] = 
-    [
-        ["Photoshop.", "Illustrator."],
-        ["Word.", "Excel."],
-        ["Analysis", "C/C++"],
-    ];
+    const allSkills: string[] = Object.values(skills).flat();
+    const [currentIndex, setCurrentIndex] = useState<number>(0);
+    const [fade, setFade] = useState<boolean>(true); // control opacity
 
-
-    // useEffect(() =>{
-    //     const interval: NodeJS.Timeout = setInterval(()=> {
-    //         setIndex((prev) => (prev + 1) % skillPairs.length);
-    //     }, 2000);
-    //     return () => clearInterval(interval);
-    // }, []);
+    useEffect(()=> {
+        const interval = setInterval(() => {
+            setFade(false); // start fade out
+            setTimeout(()=> {
+                setCurrentIndex((prev) => (prev + 1) % allSkills.length);
+                setFade(true); //fade in nextSkill
+            }, 500); // match fade duration
+            
+        }, 2000);
+        return () => clearInterval(interval);
+    }, [allSkills.length]);
 
     return (
-        <div className="flex flex-col relative border-2 bg-white text-black items-center space-y-64 w-screen h-screen">
-            {/* top */}
-            <div>
-            <div className="flex z-10 font-extrabold text-9xl black text-center self-end">
-                <h2 className="transition-opacity duration-3000 ease-out">{skillPairs[index][0]}</h2>
-            </div>            
-            {/* bottom */}
-            <div className="flex z-10 font-extrabold text-9xl black text-center self-start">
-                <h2 className="transition-opacity duration-3000 ease-out">{skillPairs[index][1]}</h2>
-            </div>
-            </div>
-
-
-
-
+        <div className="flex flex-col justify-center relative border-2 bg-white text-black items-center space-y-64 w-screen h-screen">
+                <h2 className={`text-8xl font-bold transition-opacity duration-500 ease-in-out ${fade ? "opacity-100" : "opacity-0" }`}>{allSkills[currentIndex]}</h2> 
         </div>
     )
+
 }

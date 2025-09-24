@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import SkillsRotator from "./Skills/page";
+import SkillsRotator from "./skills/page";
 import Navbar from "./components/navbar";
 
 
