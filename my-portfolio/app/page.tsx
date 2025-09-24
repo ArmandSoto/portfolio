@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Skills from "./Skills/page";
-import Navbar from "./navbar";
+import SkillsRotator from "./Skills/page";
+import Navbar from "./components/navbar";
+
 
 /* when animation is done, fade in all of the other elements and maybe add a bounce */
 
@@ -54,7 +55,6 @@ export default function Home() {
       totalDelay += word.length * 150 + 500;
     });
 
-
     //do cleanup for useEffect
     return () => {
       timeouts.forEach((t) => clearTimeout(t));
@@ -63,7 +63,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div>
+    <>
       {/*Navbar fade-in*/}
       <div
         className={`transition-opacity duration-3000 ease-out ${
@@ -73,33 +73,43 @@ export default function Home() {
         <Navbar />
       </div>
 
-      {/*Hero Section*/}
-      {/* items center is vertical positioning */}
-      <div className={`flex items-center w-screen h-screen justify-center`}>
-        {/*64 previously */}
-        <div
-          className={`relative flex font-extrabold text-9xl text-neon text-center ${
-            moveTitle
-              ? "transform transition-transform duration-1000 ease-out -translate-x-54"
-              : ""
-          }`}
-        >
-          <h1>
-            {title}
-            <span className={`inline-block ${showCursor ? "" : "opacity-0"}`}>
-              |
-            </span>
-          </h1>
+      {/* ------------ LAYERED SECTIONS ----------- */}
+
+      {/*container for layered sections */}
+      <div className="min-h-screen overflow-auto relative"> 
+        {/*Hero Section */}
+        <div className="h-screen relative w-screen z-0 flex items-center justify-center">
+          <div
+            className={`relative flex font-extrabold text-9xl text-neon text-center ${
+              moveTitle
+                ? "transform transition-transform duration-1000 ease-out -translate-x-54"
+                : ""
+            }`}
+          >
+            <h1>
+              {title}
+              <span className={`inline-block ${showCursor ? "" : "opacity-0"}`}>
+                |
+              </span>
+            </h1>
+          </div>
+          <img
+            src="/Google Profile Picture.jpg"
+            alt="Profile"
+            className={`w-84 h-84 rounded-full object-cover absolute right-30 transition-opacity border-[#3eb489] border-4 duration-2000 ease-in ${
+              showProfilePic ? "opacity-100" : "opacity-0"
+            }`}
+          />
         </div>
-        <img
-          src="/Google Profile Picture.jpg"
-          alt="Profile"
-          className={`w-84 h-84 rounded-full object-cover absolute right-30 transition-opacity border-[#3eb489] border-4 duration-2000 ease-in ${
-            showProfilePic ? "opacity-100" : "opacity-0"
-          }`}
-        />
+      {/* Skills Section white background */}
+         <div className="h-screen z-10 bg-white z-10 flex items-center">
+            <SkillsRotator />
+          </div> 
       </div>
-      <Skills />
-    </div>
+
+
+
+      {/* ------------ LAYERED SECTIONS ----------- */}
+    </>
   );
 }

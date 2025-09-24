@@ -1,6 +1,5 @@
 "use client"
 
-import {useState} from "react";
 import Link from "next/link";
 
 export default function Navbar(){
@@ -9,7 +8,7 @@ export default function Navbar(){
 
 
     return(
-        <nav className={`flex w-3/8 border-b-1 white w-full ml-auto space-x-6 pt-1 pb-1 pr-4 items-center justify-end text-lg text-neon-white`}>
+        <nav className={`flex white w-full ml-auto space-x-32 p-2 items-center text-lg white`}>
             
                 <Link href="/home" className={`${linkStyle}`}>Home</Link>
                 <Link href="/projects" className={`${linkStyle}`}>Projects</Link>
