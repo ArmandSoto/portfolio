@@ -10,7 +10,7 @@ export default function Navbar(){
     return(
         <nav className={`flex white w-full ml-auto space-x-32 p-2 items-center text-lg white`}>
             
-                <Link href="/home" className={`${linkStyle}`}>Home</Link>
+                <Link href="#skills" className={`${linkStyle}`}>Skills</Link>
                 <Link href="/projects" className={`${linkStyle}`}>Projects</Link>
                 <Link href="/contact" className={`${linkStyle}`}>Contact</Link>
         </nav>

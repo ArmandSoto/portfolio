@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import SkillsRotator from "./skills/page";
+import SkillsRotator from "./components/SkillsRotator";
 import Navbar from "./components/navbar";
 
 
@@ -102,9 +102,9 @@ export default function Home() {
           />
         </div>
       {/* Skills Section white background */}
-         <div className="h-screen z-10 bg-white z-10 flex items-center">
+         <section className="h-screen z-10 bg-white z-10 flex items-center" id="skills">
             <SkillsRotator />
-          </div> 
+          </section> 
       </div>
 
 
